@@ -1,19 +1,17 @@
-import nmap
 from os import geteuid
 from time import sleep
 from sys import version_info
 from socket import create_connection
-from assets.cores import red,reset,green,cyan,yellow,magenta,blue,white,blink
-import pandas as pd
-import numpy as np
+from assets.cores import yellow,green,red,reset,cyan,magenta
+from assets.constantes import yes,load
 
-def checkNET(): # Checks for internet connection #
+def checkNET(): 
     print(yellow + "[*] A testar conexão da rede...")
     try:
         create_connection(("www.google.com", 80))
         print(green + "[+] Rede encontrada.")
-        sleep(2)
-    except OSError: # Checks for OSError #
+        sleep(0.1)
+    except OSError: 
         print(red + "[!] Rede não encontrada." + reset)
         exit(0)
 
@@ -31,21 +29,18 @@ def checkSU():
     else:
         print(green+"[+] Privilégio válido.")
 
-def get_HostScanData(nmapOBJECT,h):
-    return {'Host': [h], 'Hostname':[nmapOBJECT[h].hostname()],'Estado':[nmapOBJECT[h].state()]}
-
-
-def PingScan(h):
-    portScan = nmap.PortScanner();portScan.scan(hosts=h,arguments='-sn');
-    print(portScan.all_hosts())
-    for host,index in zip(portScan.all_hosts(),[i for i in range(len(portScan.all_hosts()))]):
-        if index == 0:
-            print("OKKKKKK")
-            EstadoHOST = pd.DataFrame(data=get_HostScanData(portScan,host))
+def get_IP(option):
+    while True:
+        if input(cyan+option+' em todos os computadores da rede (submáscara /24: 255.255.255.0)? ').lower() in yes:
+            print(load);sleep(0.1);
+            host_choice = '192.168.1.0/24';break;
         else:
-            EstadoHOST.append(get_HostScanData(portScan,host),ignore_index=True)
-            #print("Not first")
-        print(EstadoHOST)
-
-
-
+            if input('Um IP em específico? ') in yes:
+                ipp = input('IP escolhido: ')
+                print(magenta+'O endereço IP escolhido foi {0}'.format(ipp))
+                if input(cyan+'Está correto? ') in yes:
+                    print(load);sleep(0.1);
+                    host_choice = ipp;break;
+                else:
+                    print(yellow+'OK...terá outra oportunidade :)')
+    return host_choice

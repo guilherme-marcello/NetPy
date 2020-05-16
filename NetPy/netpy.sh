@@ -31,7 +31,7 @@ while [ $opt != '' ]
         1) clear;
             option_picked "Varrimento de portas na rede";
             printf "A carregar...\n";
-	    python3 1./testports/main.py;
+	    python3 main/1.py;
 	    break;
            
         ;;
