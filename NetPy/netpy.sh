@@ -6,11 +6,8 @@ show_menu(){
     bgred=`echo "\033[41m"`
     fgred=`echo "\033[31m"`
     printf "\n${menu}*********************************************${normal}\n"
-    printf "${menu}**${number} 1)${menu} Varrimento de portas na rede ${normal}\n"
+    printf "${menu}**${number} 1)${menu} Ping Scan ${normal}\n"
     printf "${menu}**${number} 99)${menu} Sair ${normal}\n"
-#    printf "${menu}**${number} 3)${menu} Restart Apache ${normal}\n"
-#    printf "${menu}**${number} 4)${menu} ssh Frost TomCat Server ${normal}\n"
-#    printf "${menu}**${number} 5)${menu} Some other commands${normal}\n"
     printf "${menu}*********************************************${normal}\n"
     printf "Escolha um opção. ${normal}"
     read opt
@@ -29,7 +26,7 @@ while [ $opt != '' ]
     do
       case $opt in
         1) clear;
-            option_picked "Varrimento de portas na rede";
+            option_picked "Ping Scan";
             printf "A carregar...\n";
 	    python3 main/1.py;
 	    break;
