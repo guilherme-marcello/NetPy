@@ -35,10 +35,10 @@ def get_IP(option):
             print(load);sleep(0.1);
             host_choice = '192.168.1.0/24';break;
         else:
-            if input('Um IP em específico? ') in yes:
-                ipp = input('IP escolhido: ')
-                print(magenta+'O endereço IP escolhido foi {0}'.format(ipp))
-                if input(cyan+'Está correto? ') in yes:
+            if input('Um host em específico? ').lower() in yes:
+                ipp = input('Host escolhido: ')
+                print(magenta+'O host escolhido foi {0}'.format(ipp))
+                if input(cyan+'Está correto? ').lower in yes:
                     print(load);sleep(0.1);
                     host_choice = ipp;break;
                 else:
