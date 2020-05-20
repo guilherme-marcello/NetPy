@@ -1,26 +1,20 @@
 #!/bin/sh
 
-red=`echo "\033[91;1m"`
 green=`echo "\033[92;1m"`
 cyan=`echo "\033[96;1m"`
 yellow=`echo "\033[93;1m"`
-magenta=`echo "\033[95;1m"`
-blue=`echo "\033[94;1m"`
 blue_menu=`echo "\033[36m"`
 white=`echo "\033[97;1m"`
-blink=`echo "\033[5m"`
 normal=`echo "\033[m"`
-menu=`echo "\033[36m"` #Blue
-number=`echo "\033[33m"` #yellow
-bgred=`echo "\033[41m"`
-fgred=`echo "\033[31m"`
-msgcolor=`echo "\033[01;31m"` # bold red
-normal2=`echo "\033[00;00m"` # normal white
+menu=`echo "\033[36m"`
+number=`echo "\033[33m"` 
+sred=`echo "\033[01;31m"`
+normal2=`echo "\033[00;00m"` 
 look_for_help="Utilize o comando 'show options' para visualizar as opções ou acesse a lista de comandos com 'help'. "
 
 option_picked(){
     message=${@:-"${normal2}Error: Algo de errado aconteceu. Contacte um desenvolvedor"}
-    printf "${msgcolor}${message}${normal2}\n"
+    printf "${sred}${message}${normal2}\n"
 }
 
 enter_request(){
